@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  web:    
+    build: .
+    depends_on: db
+    ports: ""
+    networks:
+      - projeto
+  
+  db:
+    image: postgres:12
+    enviorment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASS: 'postgres'
+
+    volumes:
+      -db:/usr/postgres
+
+    networks:
+      - projeto
+
+networks:
+  projeto:
+    drive:
+      bridge
+
+
+
+    
